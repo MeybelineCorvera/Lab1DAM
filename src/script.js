@@ -158,12 +158,12 @@ class Calculadora {
         // Muestra el valor actual formateado en el display principal
         this.valorActualTextElement.innerText = this.obtenerNumero(this.valorActual)
         // Si hay una operación seleccionada, muestra el valor previo y la operación
-        if (this.operacion != null) {
-            this.valorPrevioTextElement.innerText = `${this.obtenerNumero(this.valorPrevio)} ${this.operacion} ${this.valorActual}`
-
-        } else if (this.ultimoFueIgual && this.historialOperacion) {
+        if (this.ultimoFueIgual && this.historialOperacion) {
             
-            this.valorPrevioTextElement.innerText = this.historialOperacion;    
+            this.valorPrevioTextElement.innerText = this.historialOperacion;  
+
+        } else if (this.operacion != null) {
+            this.valorPrevioTextElement.innerText = `${this.obtenerNumero(this.valorPrevio)} ${this.operacion} ${this.valorActual}`    
         } else {
             this.valorPrevioTextElement.innerText = ''
         }
@@ -222,8 +222,8 @@ operacionButtons.forEach(button => {
 // Ejecuta el cálculo de la operación pendiente y muestra el resultado
 igualButton.addEventListener('click', () => {
     calculator.calcular();
-    calculator.actualizarPantalla();
     calculator.ultimoFueIgual = true;
+    calculator.actualizarPantalla();
 })
 
 // Evento para el botón de borrar todo (AC/Clear)
